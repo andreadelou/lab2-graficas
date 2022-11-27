@@ -55,6 +55,8 @@ class Render(object):
     f.close()
 
   def display(self, filename='out.bmp'):
+      #Esto es para que el bpm pueda ser previamente visto como una imagen y no se tenga que descarfar el bmp
+      #para poderlo visualizar 
     self.write(filename)
 
     try:
