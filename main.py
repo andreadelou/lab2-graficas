@@ -16,7 +16,7 @@ class Render(object):
     self.clear()
 
   def clear(self):
-    self.pixels = [
+    self.framebuffer = [
       [BLACK for x in range(self.width)] 
       for y in range(self.height)
     ]
@@ -50,7 +50,7 @@ class Render(object):
    
     for x in range(self.height):
       for y in range(self.width):
-        f.write(self.pixels[x][y])
+        f.write(self.framebuffer[x][y])
 
     f.close()
 
@@ -73,7 +73,7 @@ class Render(object):
 
   def point(self, x, y, color = None):
     try:
-      self.pixels[y][x] = color or self.current_color
+      self.framebuffer[y][x] = color or self.current_color
     except:
       pass
   
@@ -81,15 +81,14 @@ class Render(object):
   def shader(self, A,B,C,x,y):
     centro_x, centro_y = 330,260 #centro del planeta
     radio = 2 + random.randint(0,20) 
-    
-    
   
     #el lunar de Jupiter
     if(x-centro_x)**2 +(y-centro_y)**2 < radio**2:
       return color(244, 98, 3)
-    #
+    
+    
     #Esto se basa en el tama;o que quiero que tengan las lineas de color
-    #El y determina que tanto espacio del planeta ocuparan con las debidas coordenadas
+    #El y determina que tanto espacio del planeta ocuparan con las debidas coordenadas de alto
     #Mientras que el random es el tama;o de dispersion de las "particulas" para hacerlo ver "gaseoso"
     
     
